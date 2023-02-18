@@ -39,9 +39,16 @@ jobs:
         if: ${{ '1' == '0' }}
       - name: Semgrep scan 2
         # run: semgrep ci  # The recommended way to run semgrep in CI
-        run: semgrep scan --no-error
+        run: semgrep scan --no-error --sarif -o semgrep.sarif
         env:
           # Add the rules that Semgrep uses by setting the SEMGREP_RULES environment variable.
           SEMGREP_RULES: p/default # more at semgrep.dev/explore
         working-directory: ${{ env.SCANNED_REPO }}
+        if: ${{ '0' == '0' }}
+      - name: Explore 2
+        run: |
+          set -ux
+          pwd
+          ls -al
+          ls -al ${SCANNED_REPO}
         if: ${{ '0' == '0' }}
