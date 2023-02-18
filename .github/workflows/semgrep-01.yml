@@ -13,7 +13,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3  # https://github.com/actions/checkout
         with:
-          repository: 'sv-security-scans-05a'  # Default: ${{ github.repository }}
+          repository: 'solita/sv-security-scans-05a'  # Default: ${{ github.repository }}
           ref: 'snyk-02'  # 'main'
           token: ''  # Default: ${{ github.token }}
           path: 'scanned-repo'  # Relative path under $GITHUB_WORKSPACE to place the repository
