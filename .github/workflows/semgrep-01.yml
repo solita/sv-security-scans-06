@@ -4,8 +4,8 @@ name: semgrep-01
 on:
   push:
     branches:
-      # - main
-      - nonexistent  # avoid triggering
+      - main
+      # - nonexistent  # avoid triggering
 env:
   SCANNED_REPO: 'scanned-repo'  # constant for multiple reuse
 jobs:
@@ -27,11 +27,20 @@ jobs:
           ls -al
           ls -al ${SCANNED_REPO}
         if: ${{ '0' == '0' }}
-      - name: Semgrep scan
+      - name: Semgrep scan 1
         run: |
           set -ux
           pwd
           ls -al
-          docker run --rm -v "${PWD}:/src" returntocorp/semgrep semgrep --config=auto --verbose
+          docker run --rm -v "${PWD}:/src" returntocorp/semgrep semgrep --config=auto --sarif -o semgrep1.sarif --verbose
         working-directory: ${{ env.SCANNED_REPO }}
         if: ${{ '0' == '0' }}
+      - name: Explore 2
+        run: |
+          set -ux
+          pwd
+          ls -al
+          ls -al ${SCANNED_REPO}
+        if: ${{ '0' == '0' }}
+
+
