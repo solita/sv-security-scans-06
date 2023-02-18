@@ -34,12 +34,12 @@ jobs:
           set -ux
           pwd
           ls -al
-          docker run --rm -v "${PWD}:/src" returntocorp/semgrep semgrep --config=auto --verbose
+          docker run --rm -v "${PWD}:/src" returntocorp/semgrep semgrep --config=auto --sarif -o semgrep1.sarif --verbose
         working-directory: ${{ env.SCANNED_REPO }}
-        if: ${{ '1' == '0' }}
+        if: ${{ '0' == '0' }}
       - name: Semgrep scan 2
         # run: semgrep ci  # The recommended way to run semgrep in CI
-        run: semgrep scan --no-error --sarif -o semgrep.sarif
+        run: semgrep scan --no-error --sarif -o semgrep2.sarif
         env:
           # Add the rules that Semgrep uses by setting the SEMGREP_RULES environment variable.
           SEMGREP_RULES: p/default # more at semgrep.dev/explore
