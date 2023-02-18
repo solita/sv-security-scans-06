@@ -12,7 +12,7 @@
    covering numerous languages. You can use it in your private
    and internal repos.
 
-4. Semgrep is a powerful static analysis tool with reach sets of 
+4. Semgrep is a powerful static analysis tool with rich sets of 
    default and custom rules: https://semgrep.dev/
 
 ## Contents of this repo
