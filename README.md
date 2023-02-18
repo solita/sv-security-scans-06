@@ -12,8 +12,8 @@
    covering numerous languages. You can use it in your private
    and internal repos.
 
-4. It's a powerful static analysis tool with reach sets of default 
-   and custom rules: https://semgrep.dev/
+4. Semgrep is a powerful static analysis tool with reach sets of 
+   default and custom rules: https://semgrep.dev/
 
 ## Contents of this repo
 
