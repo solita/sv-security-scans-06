@@ -18,7 +18,7 @@ jobs:
           repository: 'solita/sv-security-scans-05a'  # Default: ${{ github.repository }}
           ref: 'snyk-02'  # 'main'
           # token: ''  # Default: ${{ github.token }}
-          path: $SCANNED_REPO  # Relative path under $GITHUB_WORKSPACE to place the repository
+          path: ${{ env.SCANNED_REPO }}  # Relative path under $GITHUB_WORKSPACE to place the repository
       - name: Explore
         run: |
           set -ux
