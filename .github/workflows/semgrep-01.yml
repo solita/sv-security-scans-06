@@ -7,7 +7,7 @@ on:
       - main
       # - nonexistent  # avoid triggering
 env:
-  SCANNED_REPO: 'scanned-repo'
+  SCANNED_REPO: 'scanned-repo'  # contant for multiple use
 jobs:
   semgrep-SAST:
     runs-on: ubuntu-latest
@@ -26,4 +26,12 @@ jobs:
           pwd
           ls -al
           ls -al ${SCANNED_REPO}
+        if: ${{ '0' == '0' }}
+      - name: Semgrep scan
+        run: |
+          set -ux
+          pwd
+          ls -al
+          docker run --rm -v "${PWD}:/src" returntocorp/semgrep semgrep --config=auto --verbose
+        working-directory: ${{ env.SCANNED_REPO }}
         if: ${{ '0' == '0' }}
