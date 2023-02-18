@@ -1,0 +1,27 @@
+# 2023-02-18
+
+name: semgrep-01
+on:
+  push:
+    branches:
+      - main
+      # - nonexistent  # avoid triggering
+jobs:
+  semgrep-SAST:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3  # https://github.com/actions/checkout
+        with:
+          repository: 'sv-security-scans-05a'  # Default: ${{ github.repository }}
+          ref: 'snyk-02'  # 'main'
+          token: ''  # Default: ${{ github.token }}
+          path: 'scanned-repo'  # Relative path under $GITHUB_WORKSPACE to place the repository
+      - name: Explore
+        run: |
+          set -ux
+          echo "GITHUB_WORKSPACE: ${GITHUB_WORKSPACE}"
+          pwd
+          ls -al
+          ls -al scanned-repo/
+        if: ${{ '0' == '0' }}
