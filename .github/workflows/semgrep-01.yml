@@ -4,10 +4,10 @@ name: semgrep-01
 on:
   push:
     branches:
-      - main
-      # - nonexistent  # avoid triggering
+      # - main
+      - nonexistent  # avoid triggering
 env:
-  SCANNED_REPO: 'scanned-repo'  # contant for multiple use
+  SCANNED_REPO: 'scanned-repo'  # constant for multiple reuse
 jobs:
   semgrep-SAST:
     runs-on: ubuntu-latest
