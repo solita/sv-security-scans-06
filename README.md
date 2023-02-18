@@ -9,4 +9,17 @@
    **private** and **internal** repos.
 
 3. This is where Semgrep comes in. It contains a free SAST tier
-   covering numerous languages.
+   covering numerous languages. You can use it in your private
+   and internal repos.
+
+4. It's a powerful static analysis tool with reach sets of default 
+   and custom rules: https://semgrep.dev/
+
+## Contents of this repo
+
+In
+```
+.github/workflows
+```
+we provide a few sample workflows which you will easily adjust
+for your needs.
