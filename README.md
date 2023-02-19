@@ -44,7 +44,7 @@ for your needs.
 2. The action `github/codeql-action/upload-sarif@v2`
    you need to upload `.sarif` files requires that you have
    GHAS (GitHub Advanced Security license). This is a catch:
-   Semgrep (no GHAS needed) generates a desired `./sarif`,
+   Semgrep (no GHAS needed) generates a desired `.sarif`,
    but you cannot upload it to GitHub (requires GHAS).
 3. You may find useful Python command line tools 
    https://github.com/microsoft/sarif-tools
