@@ -4,8 +4,8 @@ name: semgrep-01
 on:
   push:
     branches:
-      # - main
-      - nonexistent  # avoid triggering
+      - main
+      # - nonexistent  # to avoid triggering
 env:
   SCANNED_REPO: 'scanned-repo'  # constant for multiple reuse
 jobs:
@@ -26,7 +26,7 @@ jobs:
           pwd
           ls -al
           ls -al ${SCANNED_REPO}
-        if: ${{ '0' == '0' }}
+        if: ${{ '0' == '0' }}  # I use those to easily include/exclude a step
       - name: Semgrep scan 1
         run: |
           set -ux
@@ -34,13 +34,18 @@ jobs:
           ls -al
           docker run --rm -v "${PWD}:/src" returntocorp/semgrep semgrep --config=auto --sarif -o semgrep1.sarif --verbose
         working-directory: ${{ env.SCANNED_REPO }}
-        if: ${{ '0' == '0' }}
+        if: ${{ '0' == '0' }}  # I use those to easily include/exclude a step
       - name: Explore 2
         run: |
           set -ux
           pwd
           ls -al
           ls -al ${SCANNED_REPO}
-        if: ${{ '0' == '0' }}
-
-
+        if: ${{ '0' == '0' }}  # I use those to easily include/exclude a step
+      # https://github.com/actions/upload-artifact
+      - name: Upload results
+        uses: actions/upload-artifact@v3
+        with:
+          name: semgrep-01-sarif
+          path: semgrep1.sarif
+        working-directory: ${{ env.SCANNED_REPO }}

@@ -5,7 +5,7 @@ on:
   push:
     branches:
       # - main
-      - nonexistent  # avoid triggering
+      - nonexistent  # to avoid triggering
 env:
   SCANNED_REPO: 'scanned-repo'  # constant for multiple reuse
 jobs:
@@ -28,7 +28,7 @@ jobs:
           pwd
           ls -al
           ls -al ${SCANNED_REPO}
-        if: ${{ '0' == '0' }}
+        if: ${{ '0' == '0' }}  # I use those to easily include/exclude a step
       - name: Semgrep scan 2
         # run: semgrep ci  # The recommended way to run semgrep in CI
         run: semgrep scan --no-error --sarif -o semgrep2.sarif
@@ -43,4 +43,4 @@ jobs:
           pwd
           ls -al
           ls -al ${SCANNED_REPO}
-        if: ${{ '0' == '0' }}
+        if: ${{ '0' == '0' }}  # I use those to easily include/exclude a step
