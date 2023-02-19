@@ -46,6 +46,20 @@ for your needs.
    GHAS (GitHub Advanced Security license). This is a catch:
    Semgrep (no GHAS needed) generates a desired `./sarif`,
    but you cannot upload it to GitHub (requires GHAS).
-3. You may find useful
+3. You may find useful Python command line tools 
    https://github.com/microsoft/sarif-tools
 
+   ```
+   # Install a virtual invironment, if desired:
+   python3 -m venv zvenv
+   source zvenv/bin/activate
+   pip install pip -U
+   # Install sarif-tools
+   pip install sarif-tools
+   # See the summary in text form:
+   sarif summary semgrep1.sarif
+   # Generate a cvs file
+   sarif csv -o semgrep1.csv semgrep1.sarif
+   # Generate an html file
+   sarif html -o semgrep1.html semgrep1.sarif
+   ```
