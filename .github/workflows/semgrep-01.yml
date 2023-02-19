@@ -47,5 +47,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: semgrep-01-sarif
-          path: semgrep1.sarif
-        working-directory: ${{ env.SCANNED_REPO }}
+          path: ${{ env.SCANNED_REPO }}/semgrep1.sarif
+        # working-directory: ${{ env.SCANNED_REPO }}  # Unexpected value 'working-directory'
