@@ -4,8 +4,8 @@ name: semgrep-01
 on:
   push:
     branches:
-      # - main
-      - nonexistent  # to avoid triggering
+      - main
+      # - nonexistent  # to avoid triggering
 env:
   SCANNED_REPO: 'scanned-repo'  # constant for multiple reuse
 jobs:
