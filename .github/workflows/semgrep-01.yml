@@ -53,6 +53,6 @@ jobs:
       - name: Upload SARIF file to GitHub, Public/GHAS only!
         uses: github/codeql-action/upload-sarif@v2
         with:
-          sarif_file: ${SCANNED_REPO}/semgrep1.sarif
+          sarif_file: ${{ env.SCANNED_REPO }}/semgrep1.sarif
         # if: ${{ '1' == '0' }}
         if: always()  # when the previous step fails for so many vulnerabilities
